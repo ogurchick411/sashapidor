@@ -8,7 +8,7 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 10vh;
+    height: 1;
     background: #000000;
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
@@ -27,6 +27,15 @@ button{
     margin-right: 50px;
    
 }
+
+button {
+  border-radius: 10px;
+  border: 2px solid #03e9f4;
+  background: transparent;
+  transition: 0.4s ease;
+}
+
+
 button:hover{
     background: #03e9f4;
     color: #050801;
@@ -35,6 +44,15 @@ button:hover{
                 0 0 50px #03e9f4,
                 0 0 200px #03e9f4;
      -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+     
+}
+
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #03e9f4,
+              0 0 30px #03e9f4,
+              0 0 60px #03e9f4;
 }
 
 
@@ -44,9 +62,15 @@ button:hover{
     align-items: center;
     margin: auto;
     margin-top: 250px;
-    background-color: #1a0761;
+    background-color: #1b95aa;
     width: 800px;
     border-radius: 15px;
+    backdrop-filter: blur(20px);
+    background: rgba(27, 149, 170, 0.15);
+    border: 1px solid rgba(3, 233, 244, 0.5);
+    box-shadow: 0 0 25px rgba(3, 233, 244, 0.3),
+    inset 0 0 10px rgba(3, 233, 244, 0.1);
+    animation: float 5s ease-in-out infinite;
 }
 
 .quote{
@@ -54,6 +78,9 @@ button:hover{
     color: white;
     font-size: 32px;
     text-align: center;
+
+    text-shadow: 0 0 8px #03e9f4, 0 0 16px #03e9f4;
+    animation: glowText 2.5s ease-in-out infinite alternate;
 }
 
 .line{
@@ -63,11 +90,61 @@ button:hover{
 }
  
 
-.botttom{
+.bottom{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin: 30px 0px;
+    width: 100%;
+    padding: 0 50px;
     
 }
  
+
+.author{
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    text-shadow: 0 0 6px #03e9f4;
+}
+
+body {
+  background: radial-gradient(circle at 20% 20%, #0a0a0a, #00111a, #000);
+  overflow: hidden;
+}
+
+
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+
+@keyframes glowText {
+  from { text-shadow: 0 0 8px #03e9f4, 0 0 16px #03e9f4; }
+  to { text-shadow: 0 0 20px #03e9f4, 0 0 40px #00f0ff; }
+}
+
+@keyframes lineGlow {
+  from { opacity: 0.7; box-shadow: 0 0 10px #03e9f4; }
+  to { opacity: 1; box-shadow: 0 0 30px #03e9f4; }
+}
+
+
+.line {
+  background: linear-gradient(90deg, transparent, #03e9f4, transparent);
+  animation: lineGlow 3s ease-in-out infinite alternate;
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -5,46 +5,63 @@ import './RandomQ.css'
 
 const RandomQ = () => {
 
-    let quotes = [];
+    const [quotes, setQuotes] = useState([]);
 
     async function loadQuotes() {
         
-        const response = await fetch("https://api.kanye.rest");
-        quotes = await response.json();
+        const response = await fetch("https://api.api-ninjas.com/v2/quotes?categories=success,wisdom&limit=20", {
+            headers: {
+                "x-api-key": "LVutITNf+w/DSUXtzn8h2w==wc2zZCKAgeHjwfDa"
+            }
+        });
+
+        const data = await response.json();
+        console.log(data);
+        setQuotes(data);
 
         
     }
     
     
-   const [quote,SetQuote] = useState({
-            text: "Лучше хуем повертеть чем на парах посидеть",
+   const [quote,setQuote] = useState({
+            quote: "Лучше хуем повертеть чем на парах посидеть",
             author: "Denys Zheltobriukh",
             
 
         });
 
 
-    const random = () => {
+    const getRandomQuote = () => {
+        console.log("here")
         const select = quotes[Math.floor(Math.random()*quotes.length)];
-        SetQuote(select);
+        console.log(select)
+        setQuote(select);
     }
    
+        
+    useEffect(() => {
         loadQuotes();
+    }, []);
 
     return (
         
 
         <div className='container'>
-             <div className="quote">{quote.text}</div>
+             <div className="quote">{quote.quote}</div>
 
              <div>
                 <div className="line"></div>
-                <div className="bottom"></div>
-                <dir className="author">{quote.author}</dir>
 
+                <div className="bottom">
+
+                    <dir className="author">{quote.author}</dir>
+
+                    <button onClick={() => getRandomQuote()}>Get quote</button>
+
+                    <div id='insertQuoteHere' />
+
+                </div>
                 
-                <button onclick= {()=>{random()}}>Get quote</button>
-                <div id='insertQuoteHere' />
                    
 
                     
